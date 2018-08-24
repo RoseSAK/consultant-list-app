@@ -1,0 +1,81 @@
+{% extends 'base/base.html' %}
+{% block page_title %}Consultant Database{% endblock page_title %}
+{% block main_content %}
+<div class="grid-row">
+    <div class="column-one-half">
+        <form type="get" id="search-consultant" action="{% url 'consultant_database' %}" accept-charset="UTF-8">
+            {% csrf_token %}
+            <div class="form-group">
+                <label class="form-label" for="search-consultant"><span class="form-hint">Enter Search Term(s) Below</span></label>
+                <input class="form-control" id="search-consultant" type="text" name="search-consultant"> <input class="button" type="submit" value="Search">
+            </div>
+        </form>
+    </div>
+</div>
+<div class="grid-row">
+    <div class="column-one-half mb-1">
+        <input class="button" type="submit" value="View Selection">
+    </div>
+    <div class="column-one-half mb-1">
+        {% if manager %}
+            <a href="{% url 'edit_candidate' %}" class="button float-right">Add Candidate</a>
+        {% endif %}
+    </div>
+</div>
+<div class="grid-row">
+    <div class="column-full mb-1">
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Select</th>
+                        <th>Name</th>
+                        {% if manager %}<th>Contact Number</th>{% endif %}
+                        <th>Practice</th>
+                        <th>Role</th>
+                        <th>Teams</th>
+                        <th>Skills</th>
+                        <th>Sectors</th>
+                        <th>Notes</th>
+                        {% if manager %}<th>Actions</th>{% endif %}
+                    </tr>
+                </thead>
+                {% for consultant in consultant_list %}
+                    <tr>
+                        <td>
+                            <div class="multiple-choice consultant-database">
+                                <input id="select-user-{{consultant.id}}" name="select-user-{{consultant.id}}" type="checkbox">
+                                <label for="select-user-{{consultant.id}}"></label>
+                            </div>
+                        </td>
+                        <td><a href="{% url 'candidate_detail' consultant.id %}">{{consultant}}</td>
+                        {% if manager %}<td>{{consultant.contact_number}}</td>{% endif %}
+                        <td>{{consultant.practice}}</td>
+                        <td>{{consultant.role}}</td>
+                        <td>{{consultant.teams}}</td>
+                        <td>{{consultant.skills}}</td>
+                        <td>{{consultant.sectors}}</td>
+                        <td>{{consultant.notes}}</td>
+                        {% if manager %}
+                        <td>
+                            <a href="{% url 'edit_candidate' consultant.id %}">Edit</a>
+                            <!-- Should take user to edit candidate detail view -->
+                        </td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+<div class="grid-row">
+    <div class="column-one-half mb-1">
+        <input class="button" type="submit" value="View Selection">
+    </div>
+    <div class="column-one-half mb-1">
+        {% if manager %}
+            <a href="{% url 'edit_candidate' %}" class="button float-right">Add Candidate</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock main_content %}

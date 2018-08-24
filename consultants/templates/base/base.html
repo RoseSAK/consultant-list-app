@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<!--[if lt IE 9]><html class="lte-ie8" lang=""><![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="">
+<!--<![endif]-->
+
+<head>
+  <meta charset="utf-8" />
+  <title>M.I.C.K. - Grumpy Goodness</title>
+
+  <!--[if gt IE 8]><!-->
+  <link rel="stylesheet" media="screen" href="/static/govuk_template-0.23.0/assets/stylesheets/govuk-template.css?0.23.0"
+  />
+  <!--<![endif]-->
+  <!--[if IE 6]><link rel="stylesheet" media="screen" href="/static/govuk_template-0.23.0/assets/stylesheets/govuk-template-ie6.css?0.23.0"/><![endif]-->
+  <!--[if IE 7]><link rel="stylesheet" media="screen" href="/static/govuk_template-0.23.0/assets/stylesheets/govuk-template-ie7.css?0.23.0"/><![endif]-->
+  <!--[if IE 8]><link rel="stylesheet" media="screen" href="/static/govuk_template-0.23.0/assets/stylesheets/govuk-template-ie8.css?0.23.0"/><![endif]-->
+  <link rel="stylesheet" media="print" href="/static/govuk_template-0.23.0/assets/stylesheets/govuk-template-print.css?0.23.0"
+  />
+
+  <!--[if IE 8]><link rel="stylesheet" media="all" href="/static/govuk_template-0.23.0/assets/stylesheets/fonts-ie8.css?0.23.0"/><![endif]-->
+  <!--[if gte IE 9]><!-->
+  <link rel="stylesheet" media="all" href="/static/govuk_template-0.23.0/assets/stylesheets/fonts.css?0.23.0" />
+  <!--<![endif]-->
+  <!--[if lt IE 9]><script src="/static/govuk_template-0.23.0/assets/javascripts/ie.js?0.23.0"></script><![endif]-->
+
+  <link rel="shortcut icon" href="/static/govuk_template-0.23.0/assets/images/favicon.ico?0.23.0" type="image/x-icon" />
+
+  <link rel="mask-icon" href="/static/govuk_template-0.23.0/assets/images/gov.uk_logotype_crown.svg?0.23.0" color="#0b0c0c">
+  <link rel="apple-touch-icon" sizes="180x180" href="/static/govuk_template-0.23.0/assets/images/apple-touch-icon-180x180.png?0.23.0">
+  <link rel="apple-touch-icon" sizes="167x167" href="/static/govuk_template-0.23.0/assets/images/apple-touch-icon-167x167.png?0.23.0">
+  <link rel="apple-touch-icon" sizes="152x152" href="/static/govuk_template-0.23.0/assets/images/apple-touch-icon-152x152.png?0.23.0">
+  <link rel="apple-touch-icon" href="/static/govuk_template-0.23.0/assets/images/apple-touch-icon.png?0.23.0">
+
+
+  <meta name="theme-color" content="#0b0c0c" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:image" content="/static/govuk_template-0.23.0/assets/images/opengraph-image.png?0.23.0">
+  <link rel="stylesheet" media="screen" href="/static/govuk_template-0.23.0/assets/stylesheets/govuk-elements-styles.css">
+  <link rel="stylesheet" media="screen" href="/static/styles/styles.css">  
+</head>
+
+<body class="">
+  <script>
+    document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
+  </script>
+
+  <div id="skiplink-container">
+    <div>
+      <a href="#content" class="skiplink"></a>
+    </div>
+  </div>
+
+  <header role="banner" id="global-header" class="with-proposition">
+    <div class="header-wrapper">
+      <div class="header-global">
+        <div class="header-logo">
+          <a href="/" title="Home" id="logo" class="content">
+            <img src="/static/logo.jpeg" alt="Solirius Logo">
+          </a>
+        </div>
+      </div>
+      <div class='header-proposition'>
+        <div class='content'>
+          <a href='#proposition-links' class='js-header-toggle menu'>Menu</a>
+          <nav id='proposition-menu'>
+            <a href='/static/govuk_template-0.23.0/' id='proposition-name'>M.I.C.K.</a>
+            <ul id='proposition-links'>
+              <li>
+                <a href="{% url 'view_all' %}" class="{% if view_all_staff %}active{% endif %}">View All Staff</a>
+              </li>
+              {% if request.user.is_authenticated %}
+                <li><a href="/logout">Logout</a></li>
+              {% else %}
+                <li><a href="/login">Login</a></li>
+              {% endif %}
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div id="global-header-bar"></div>
+
+  <main class="site-wrapper">
+    <div class="grid-row">
+      <div class="column-full">
+        <h2 class="heading-large {% block title_style %}{% endblock title_style%}">{% block page_title %}M.I.C.K.{% endblock page_title %}</h2>
+      </div>
+    </div>
+    {% block main_content %}{% endblock main_content %}
+  </main>
+  <footer class="group js-footer" id="footer" role="contentinfo">
+    <div class="footer-wrapper">
+      <div class="footer-meta">
+        <div class="footer-meta-inner">
+          <div class="open-government-licence">
+            <p class="logo">
+              <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence</a>
+            </p>
+
+            <p>Content via
+              <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+                rel="license">OGL v3.0</a>.</p>
+          </div>
+        </div>
+
+        <div class="copyright">
+          © Solirius Ltd {% now 'Y' %}</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div id="global-app-error" class="app-error hidden"></div>
+
+  <script src="/static/govuk_template-0.23.0/assets/javascripts/govuk-template.js?0.23.0"></script>
+
+  <script>
+    if (typeof window.GOVUK === 'undefined') document.body.className = document.body.className.replace('js-enabled', '');
+  </script>
+</body>
+
+</html>

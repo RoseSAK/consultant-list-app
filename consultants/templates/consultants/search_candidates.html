@@ -1,0 +1,8 @@
+{% extends 'base/base.html' %}
+
+<form type="get" id="search_form" action="{% url 'consultant_database' %}" accept-charset="UTF-8" style="margin: 0">
+            <div class="form-group">
+                <label class="form-label" for="search-consultant"><span class="form-hint">Enter Search Term(s) Below</span></label>
+                <input class="form-control" id="search-consultant" type="text" name="search-consultant"> <input class="button" type="submit" value="Search">
+            </div>
+        </form>

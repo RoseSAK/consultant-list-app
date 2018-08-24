@@ -1,0 +1,21 @@
+{% extends 'base/base.html' %}
+
+{% block page_title %}
+{{consultant}}
+{% endblock page_title %}
+
+{% block main_content %}
+<div class='col-sm-6 col-sm-offset-3'>
+    {% if request.user == object.user %}
+        <p>Are you sure you want to delete {{candidate}}?</p>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <input type="submit" value="Delete" />
+            <input type="button" value="Cancel" onclick="window.location='{% url 'consultant_database' %}'"/>
+        </form>
+    {% else %}
+        <h4>You're not allowed to be here.</h4>
+        <a href="{% url 'dashboard' %}">Dashboard</a>
+    {% endif %}
+</div>
+{% endblock main_content %}

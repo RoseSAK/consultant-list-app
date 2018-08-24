@@ -1,0 +1,27 @@
+{% extends 'base/base.html' %}
+{% block page_title %}View All Consultants{% endblock page_title %}
+{% block main_content %}
+<div class="grid-row">
+  {% for consultant in consultant_list %}
+    <div class="column-one-quarter consultant-column">
+      <div class="grid-row">
+        <div class="column-two-thirds consultant-name">
+          <h3 class="heading-medium">{{consultant}}</h3>
+        </div>
+        <div class="column-one-third">
+          <span class="{{consultant.practice}}-practice">&nbsp;{{consultant.practice}}&nbsp;</span>
+        </div>
+      </div>
+      <div class="grid-row">
+        <div class="column-one-half">
+          {{consultant.role}}
+        </div>
+        <div class="column-one-half">
+          {{consultant.teams}}
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+{% endblock main_content %}

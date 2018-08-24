@@ -1,0 +1,54 @@
+/* Extend GDS Template */
+
+.site-wrapper {
+  margin: 1em auto 5em auto;
+  padding: 0 2.5%;
+}
+
+/* Overwrite GDS Template */
+
+.multiple-choice.consultant-database > input {
+  position: static;
+}
+
+.consultant-name > .heading-medium {
+  margin-top: 0;
+
+}
+
+.heading-large { margin-top: 0.75em }
+
+/* Additional Classes */
+
+.table-responsive { overflow-x: auto }
+
+.float-right { float: right }
+
+.text-center { text-align: center }
+
+
+/* View All Page */
+
+.consultant-column {
+  border-left: 2px solid #005ea5;
+  padding: 0.5em 1em;
+  margin-top: 1em;
+}
+
+.TC-practice {
+  background-color:#f499be;
+}
+
+.SE-practice {
+  color: #fff;
+  background-color: #2b8cc4;
+}
+
+.D-practice {
+  color: #fff;
+  background-color: #28a197;
+}
+
+.O-practice {
+  background-color: #f47738;
+}

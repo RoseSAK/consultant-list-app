@@ -1,0 +1,35 @@
+{% extends 'base/base.html' %}
+
+{% block page_title %}
+{{consultant}}
+{% endblock page_title %}
+
+{% block main_content %}
+<div class="grid-row">
+    <div class="column-one-half mb-1">
+            {% if manager %}
+                <a href="{% url 'edit_candidate' consultant.id %}" class="button float-left" display="inline-block">Edit Candidate</a>
+                <a href="{% url 'delete_candidate' consultant.id %}" class="button float-left btn-red" display="inline-block">Delete Candidate</a>
+            {% endif %}
+    </div>
+    <div class="column-one-half mb-1">
+            <a href="{% url 'consultant_database' %}" class="button float-right" display="inline-block">Back to Database</a>
+    </div>
+</div>
+<div class="grid-row">
+    <div class="column-full mb-1">
+        <div class="table-responsive">
+            <table>
+                <tr><th>Name</th><td>{{consultant}}</td></tr>
+                {% if manager %}<tr><th>Contact Number</th><td>{{consultant.contact_number}}</td></tr>{% endif %}
+                <tr><th>Practice</th><td>{{consultant.practice}}</td></tr>
+                <tr><th>Role</th><td>{{consultant.role}}</td></tr>
+                <tr><th>Teams</th><td>{{consultant.teams}}</td></tr>
+                <tr><th>Skills</th><td>{{consultant.skills}}</td></tr>
+                <tr><th>Sectors</th><td>{{consultant.sectors}}</td></tr>
+                <tr><th>Notes</th><td>{{consultant.notes}}</td></tr>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock main_content %}

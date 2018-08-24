@@ -1,0 +1,15 @@
+{% extends 'base/base.html' %}
+{% block title_style %}text-center{% endblock title_style %}
+
+{% block page_title %}Manager Home{% endblock page_title %}
+
+{% block main_content %}
+<div class="grid-row">
+  <div class="column-one-half">
+    <a href="{% url 'search_candidates' %}" class="button float-right">Search Candidates</a>
+  </div>
+  <div class="column-one-half">
+    <a href="{% url 'consultant_database' %}" class="button">Add or Edit Candidates</a>
+  </div>
+</div>
+{% endblock main_content %}

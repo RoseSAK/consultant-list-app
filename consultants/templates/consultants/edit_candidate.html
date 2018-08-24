@@ -1,0 +1,67 @@
+{% extends 'base/base.html' %}
+{% block page_title %}
+  {% if candidate %}
+    Edit {{ candidate }}
+  {% else %}
+    Add Consultant
+  {% endif %}
+{% endblock page_title %}
+{% block main_content %}
+<div class="grid-row">
+    <div class="column-one-half mb-1">
+      {% if candidate %}
+        <a href="{% url 'candidate_detail' candidate.id %}" class="button float-left" display="inline-block">View Consultant Info</a>
+        <a href="{% url 'delete_candidate' candidate.id %}" class="button float-left btn-red" display="inline-block">Delete Candidate</a>
+      {% endif %}
+      <a href="{% url 'consultant_database' %}" class="button float-right" display="inline-block">Back to Database</a>
+    </div>
+</div>
+{% if candidate %}
+  <form action="{% url 'edit_candidate' candidate.id %}" method="post">
+{% else %}
+    <form action="{% url 'edit_candidate' %}" method="post">
+{% endif %}
+  {% csrf_token %}
+  <div class="form-group">
+      {{ form.consultant_name.errors }}
+      <label id="consultant-name" class="form-label" for="{{ form.consultant_name.id_for_label }}"><span class="form-hint">Consultant Name</span></label>
+      {{ form.consultant_name }}
+  </div>
+  <div class="form-group">
+    {{ form.contact_number.errors }}
+    <label id="contact-number" class="form-label" for="{{ form.contact_number.id_for_label }}"><span class="form-hint">Contact Number</span></label>
+    {{ form.contact_number }}
+  </div>
+  <div class="form-group">
+    {{ form.practice.errors }}
+    <label id="practice" class="form-label" for="{{ form.practice.id_for_label }}"><span class="form-hint">Practice</span></label>
+    {{ form.practice }}
+  </div>
+  <div class="form-group">
+    {{ form.role.errors }}
+    <label id="role" class="form-label" for="{{ form.role.id_for_label }}"><span class="form-hint">Role</span></label>
+    {{ form.role }}
+  </div>
+  <div class="form-group">
+    {{ form.teams.errors }}
+    <label id="teams" class="form-label" for="{{ form.teams.id_for_label }}"><span class="form-hint">Teams</span></label>
+    {{ form.teams }}
+  </div>
+  <div class="form-group">
+    {{ form.skills.errors }}
+    <label id="skills" class="form-label" for="{{ form.skills.id_for_label }}"><span class="form-hint">Skills</span></label>
+    {{ form.skills }}
+  </div>
+  <div class="form-group">
+    {{ form.sectors.errors }}
+    <label id="sectors" class="form-label" for="{{ form.sectors.id_for_label }}"><span class="form-hint">Sectors</span></label>
+    {{ form.sectors }}
+  </div>
+  <div class="form-group">
+    {{ form.notes.errors }}
+    <label id="notes" class="form-label" for="{{ form.notes.id_for_label }}"><span class="form-hint">Notes</span></label>
+    {{ form.notes }}
+  </div>
+  <input class="button" type="submit" value="Save Candidate">
+</form>
+{% endblock main_content %}
